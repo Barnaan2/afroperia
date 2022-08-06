@@ -1,7 +1,8 @@
 # afroperia
 The hotel booking project
+steps you should follow.
 ---------------------------------------------------------------------------
-1.create your local repo
+1.create your local repo <br>
 2.create vertual environment
 3.run this command on your cmd/terminal "git remote add origin https://github.com/Barnaan2/afroperia.git"
 4.run "git pull "
