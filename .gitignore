@@ -1,2 +1,5 @@
 .idea
-
+/Afoperia/settings.py
+manage.py
+db
+saticfiles
