@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-ua=9wgotr44s-j4$c4&@_#$$t7cel*-(@=5z_&q_gpx!258q4*
 DEBUG = True
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-ALLOWED_HOSTS = ['www.afroperia.jarmii.com','afroperia.jarmii.com']
+ALLOWED_HOSTS = ['127.0.0.1:8000']
 
 # Application definition
 
@@ -79,20 +79,12 @@ WSGI_APPLICATION = 'Afroperia.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jarmiicom_Afroperia',
-        'USER': 'jarmiicom_user1',
-        'PASSWORD': 'cc3377chafroperia',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        "OPTIONS": {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
-            'charset': 'utf8mb4',
-            "autocommit": True,
-        }
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

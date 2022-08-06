@@ -1,0 +1,4 @@
+run the following commands in vertual environment
+pip install Django
+pip insall whitenoise
+pip install django-soft-delete
