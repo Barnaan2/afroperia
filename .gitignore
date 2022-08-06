@@ -1,5 +1,5 @@
 .idea
-/Afoperia/settings.py
+Afroperia/settings.py
 manage.py
-db
-saticfiles
+db.sqlite3
+
