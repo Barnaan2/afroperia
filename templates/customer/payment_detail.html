@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block content %}
+<section id="service" class="services pt-0">
+    <div class="container" data-aos="fade-up">
+        <div class="section-header">
+
+            <span> hotel payment inforamtion </span>
+            <h2>Pay in this account </h2>
+          
+
+        </div>
+
+
+<h3>selected payment method information</h3>
+Acount Holder Name : <h3>{{ payment_details.account_holder }}</h3>   
+payment method : <h3>{{ payment_details.payment_method.name }}</h3>
+Account Number :  <h3>{{ payment_details.account_number }}</h3>
+Amount  :<h3>{{ price }} birr</h3> 
+
+
+<h3>fill out this form after you finish your payment</h3>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+   <button><input type="submit" value="save">  </button> 
+</form>
+
+<h3>rooms will be reserved</h3>
+{% for requested_room in requested_rooms %}
+
+{{ requested_room.type }}<br>
+{{ requested_room.price }}
+<br>
+</div>
+</section>
+{% endfor %}
+
+{% endblock %}

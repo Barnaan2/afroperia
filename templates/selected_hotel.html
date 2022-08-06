@@ -1,0 +1,122 @@
+{% extends 'main.html' %}
+{% block content %}
+    <main id="main">
+
+
+        <section id="about" class="about mt-2">
+            <div class="container">
+
+                <div class="row gy-4 mt-2">
+
+                    <div class="row gy-4 align-items-center features-item">
+
+                        <div  class="col-md-5">
+                            <img src="{{ hotel.picture.url }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-7">
+                            <h3>{{ hotel.name }}</h3>
+                            <p class="fst-italic">
+                                {{ hotel.description}}</p>
+                            <ul>
+                                <li><i class="bi bi-check"></i> we are found at {{ hotel.city.name }} , {{ hotel.city.region }}, {{ hotel.city.country }}
+                                </li>
+                                <li><i class="bi bi-check"></i> our specific area is {{ hotel.relative_location }} in {{ hotel.city}} city
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <!-- End Google Maps -->
+
+                <div class="row gy-4 mt-1">
+{% for feature in features %}
+                    <div class="col-lg-6">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-geo-alt flex-shrink-0"></i>
+                            <div>
+                                <h4>{{ feature.name }}</h4>
+                            </div>
+                        </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+
+                    <div class="col-lg-4 Book card p-2">
+                        <form action="" method="post" role="form" class="php-email-form">
+                              {% csrf_token %}
+
+                            <div class="dates">
+                                <div>
+                                    <label for="checkin">Checkin</label>
+                                    <input required type="date"  class="form-control" name="check_in_date">
+                                </div>
+                                <div>
+                                    <label for="checkout">Checkout</label>
+                                    <input required type="date" class="form-control" name="check_out_date">
+                                </div>
+
+                            </div>
+                            <div class="room_type">
+                                Room-type <br>
+                               {% for room in rooms %}
+        <label for="fname">{{room.type}}:</label>
+     <input type="hidden" value = {{room.id}} id="fname" name="{{room.type}}" class="form-control">
+    <input type="number" min="1" max="{{room.number_of_room}}"  name="{{room.type}}"><br><br>
+       {% endfor %}
+                            </div>
+                            
+                            
+                            <div class="text-center mt-2"><button type="submit">Book now</button></div>
+                        </form>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                {%  for room in rooms %}
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img src="{{room.picture.url}}" alt="" class="img-fluid">
+                                        </div>
+                                        <h6><a href="#" class="stretched-link">{{ room.type }}</a></h6>
+                                          <span>price {{room.price}} birr per night</span>
+                                        {%  for feature in room.Feature.all %}
+
+                                        <p>
+
+                                         {{ feature.name }}
+                                        </p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+        </section>
+        <div class="container">
+            <div class="location row">
+                <div class="map col-lg-6">
+                 <iframe src="{{hotel.absolute_location}}"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- End #main -->
+{% endblock %}

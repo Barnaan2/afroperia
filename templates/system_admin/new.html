@@ -1,0 +1,17 @@
+     {% extends 'system_admin/base.html' %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+{% endfor %}
+{% endif %}
+<form action="" method="POST" enctype="multipart/form-data">
+     {% if form.errors %}
+  <div class="alert alert-danger">
+    {{ form.errors }}
+      {% endif %}
+    {% csrf_token %}
+    {{form.as_p }}
+    <input type="submit" value="save">
+</form>
+{% endblock %}

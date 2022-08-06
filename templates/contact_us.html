@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact us</title>
+  <link rel="stylesheet" href="{% static 'assets/css/hotel.min.css' %}">
+</head>
+<body class="hold-transition">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="text-center">
+            <a href="contact.html"><h1>Contact us</h1></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="card">
+        <div class="card-body row">
+          <div class="col-5 text-center d-flex align-items-center justify-content-center">
+            <div class="">
+              <div class="contact-us">
+          <a href="{% url 'index' %}"><h1>Afroperia</h1></a>
+               </div>
+              <p class="lead mb-5">Location:Jimma ,Oromia ,Ethiopia <br>
+                Phone: 0923653562
+              </p>
+            </div>
+          </div>
+          <div class="col-5">
+            <form action="" method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+<!--            <div class="form-group">-->
+<!--              <label for="inputName">Name</label>-->
+<!--              <input type="text" id="inputName" class="form-control" />-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="inputEmail">E-Mail</label>-->
+<!--              <input type="email" id="inputEmail" class="form-control" />-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="inputSubject">Subject</label>-->
+<!--              <input type="text" id="inputSubject" class="form-control" />-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="inputMessage">Message</label>-->
+<!--              <textarea id="inputMessage" class="form-control" rows="4"></textarea>-->
+<!--            </div>-->
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Send message">
+            </div>
+          </div>
+        </div>
+      </div>
+</form>
+    </section>
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

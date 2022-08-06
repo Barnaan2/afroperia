@@ -1,0 +1,83 @@
+         {% extends 'system_admin/base.html' %}
+      {% block content %}
+
+
+
+
+
+
+
+          <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                      <div class="badge badge-outline-primary"><a href="{% url 'add_city' %}"> <h3>Add City</h3></a></div>
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">City status</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+
+                            </th>
+                            <th> City name</th>
+                            <th>Region</th>
+                            <th> exist since </th>
+
+                            <th></th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                       {% for city in cities %}
+                          <tr>
+                            <td>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </td>
+
+                            <td>{{ city.name }}</td>
+                            <td>{{ city.region }}</td>
+                            <td>{{ city.created|timesince }}</td>
+                            <td>
+
+                              <div class="badge badge-outline-primary"><a href="{% url  'update_city'  city.id %}">edit</a></div>
+
+                            </td>
+
+                          </tr>
+{% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

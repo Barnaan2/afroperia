@@ -1,0 +1,85 @@
+         {% extends 'system_admin/base.html' %}
+      {% block content %}
+
+
+
+
+
+
+
+          <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                      <div class="badge badge-outline-primary"><a href="{% url 'add_payment_method'  %}"><h3>Add payment method</h3></a></a></div>
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Payment method status</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+
+                            </th>
+                               <th> picture </th>
+                            <th> Name</th>
+                            <th> Type </th>
+                            <th></th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                      {% for payment_method in payment_methods %}
+                          <tr>
+                            <td>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </td>
+
+                            <td><div class="count-indicator">
+                <a href="user profile.html"> <img src="{{payment_method.company_logo.url}}" alt="imagee" class="img-xs rounded-circle "  height="42" width="42"></a>
+                  <span class="count bg-success"></span>
+                </div></td>
+                            <td>{{payment_method.name }}</td>
+                            <td>{{ payment_method.type }}</td>
+                            <td>
+
+                              <div class="badge badge-outline-primary"><a href="{% url 'update_payment_method'  payment_method.id %}">edit</a></div>
+
+                            </td>
+
+                          </tr>
+{% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

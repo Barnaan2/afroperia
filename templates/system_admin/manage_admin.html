@@ -1,0 +1,83 @@
+         {% extends 'system_admin/base.html' %}
+      {% block content %}
+
+
+
+
+
+
+
+          <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                      <div class="badge badge-outline-primary"><a href="{% url 'add_admin' %}"> <h3>Add Administrator</h3></a></div>
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title"> Administrators </h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+
+                            </th>
+                            <th> Name </th>
+                            <th>phone_number</th>
+                            <th> exist since </th>
+
+                            <th></th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                       {% for admin in admins %}
+                          <tr>
+                            <td>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </td>
+
+                            <td>{{ admin.first_name }}</td>
+                            <td>{{ admin.phone_number }}</td>
+                            <td>{{ admin.created|timesince }}</td>
+                            <td>
+
+                              <div class="badge badge-outline-primary"><a href="#">delete</a></div>
+
+                            </td>
+
+                          </tr>
+{% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

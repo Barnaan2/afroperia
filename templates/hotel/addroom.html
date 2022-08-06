@@ -1,0 +1,78 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h6 class="text-dark mb-0">Room Name</h6>
+                    </div>
+                    <div class="row">
+
+
+                        <div class="col-md-12">
+                            <div class="card shadow  ">
+                                <div class="card-body">
+
+
+
+
+
+                                    <div class="col-md-6 col-lg-5 ">
+                                        <div class=" mt-4 ">
+                                            <div class=" ">
+                                                <h6 class="card-title">Add Room</h6>
+                                            </div>
+
+
+                                            <form class="pl-4 pb-3 mt-2" action="" method="post" enctype="multipart/form-data">
+
+                                                {% csrf_token %}
+                                                {{form.as_p }}
+
+<!--                                                <div class="form-group">-->
+<!--                                                    <label class="form-check-label" for="exampleCheck1">Room Name</label>-->
+<!--                                                    <input type="text" required name="Roomname">-->
+<!--                                                    <span class="focus-input100"></span>-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group">-->
+<!--                                                    <label class="form-check-label" for="exampleCheck1">Room Photo</label>-->
+<!--                                                    <input type="file" name="Roomphoto" required>-->
+<!--                                                    <span class="focus-input100"></span>-->
+<!--                                                </div>-->
+
+<!--                                                <div class="form-group">-->
+<!--                                                    <label class="form-check-label" for="exampleCheck1">Features</label>-->
+<!--                                                    <div>-->
+<!--                                                        <input type="checkbox" name="Features" value="shower"> Shower<br>-->
+<!--                                                        <input type="checkbox" name="Features" value="shower"> Terrace<br>-->
+<!--                                                        <input type="checkbox" name="Features" value="shower"> Shower <br>-->
+<!--                                                        <input type="checkbox" name="Features" value="shower"> Terrace <br>-->
+<!--                                                    </div>-->
+
+<!--                                                    <span class="focus-input100"></span>-->
+<!--                                                </div>-->
+
+
+                                                <button type="submit" class="btn btn-primary">Save</button>
+
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+         {% endblock %}

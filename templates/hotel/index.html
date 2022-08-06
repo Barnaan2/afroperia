@@ -1,0 +1,105 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+<main>
+<!--    {{ price.booking_requests  }}-->
+<!--    {{ booking_requests }}-->
+<!--    {% for item in price %}-->
+<!--    {{ price.item }}-->
+<!--    {% endfor %}-->
+
+
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h6 class="text-dark mb-0">Accepted Guests</h6>
+                      </div>
+
+
+                    <div class="row mt-3">
+                        <div class="card shadow col-md-21">
+                            <div class="card-header ">
+                                <p class="text-primary m-0 font-weight-bold">Accepted Guests</p>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                    <table class="table dataTable my-0" id="dataTable1">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Checkin Date</th>
+                                                <th>Checkout Date</th>
+<!--                                                <th>Room Type| </th>-->
+<!--                                                <th>no of Room </th>-->
+                                                <th>time</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for booking_request in booking_requests %}
+
+                                            <tr>
+                                                <td>{{ booking_request.customer.first_name   }} {{ booking_request.customer.last_name}}</td>
+                                                <td>{{ booking_request.check_in_date|date:'d M Y' }}</td>
+                                                <td> {{ booking_request.check_out_date|date:'d M Y' }}</td>
+<!--                                                <td>{% for room in booking_request.room.all  %}-->
+<!--                                                    {{ room.type }} , {% endfor %}-->
+<!--                                                </td>-->
+<!--                                                <td> {% for no in number_of_rooms  %}-->
+<!--                                                    {% if no.booking_request == booking_request %}-->
+<!--                                                    {{ no.number_of_room  }} ,-->
+<!--                                                    {% endif %}-->
+<!--                                                    {% endfor %}</td>-->
+                                                <td>{{booking_request.created|timesince}} ago</td>
+                                                <td>
+                                                    <button class="btn btn-success">{{ booking_request.status }}</button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+<!--                                            <tr>-->
+<!--                                                <td>Abel Kinfu</td>-->
+<!--                                                <td>2020-02-20</td>-->
+<!--                                                <td>2020-02-23</td>-->
+<!--                                                <td>2Double</td>-->
+<!--                                                <td>20,21</td>-->
+<!--                                                <td>3000</td>-->
+<!--                                                <td>-->
+<!--                                                    <button class="btn btn-success">Check</button>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Abel Kinfu</td>-->
+<!--                                                <td>2020-02-20</td>-->
+<!--                                                <td>2020-02-23</td>-->
+<!--                                                <td>2Double</td>-->
+<!--                                                <td>20,21</td>-->
+<!--                                                <td>3000</td>-->
+<!--                                                <td>-->
+<!--                                                    <button class="btn btn-danger">Checked</button>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Abel Kinfu</td>-->
+<!--                                                <td>2020-02-20</td>-->
+<!--                                                <td>2020-02-23</td>-->
+<!--                                                <td>2Double</td>-->
+<!--                                                <td>20,21</td>-->
+<!--                                                <td>3000</td>-->
+<!--                                                <td>-->
+<!--                                                    <button class="btn btn-success">Check</button>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+          </main>
+{% endblock %}

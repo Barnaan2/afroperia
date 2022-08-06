@@ -1,0 +1,75 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h6 class="text-dark mb-0">Requests</h6>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="card shadow col-md-21">
+                            <div class="card-header ">
+                                <p class="text-primary m-0 font-weight-bold">Requested Guests</p>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                    <table class="table dataTable my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Checkin Date</th>
+                                                <th>Checkout Date</th>
+                                                <th>Room Type </th>
+                                                <th>Room no</th>
+                                                <th>Price</th>
+                                                <th>Accept/Decline</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for booking_request in booking_requests %}
+
+                                            <tr>
+                                                <td>{{ booking_request.customer.first_name   }} {{ booking_request.customer.last_name}}</td>
+                                                <td>{{ booking_request.check_in_date|date:'d M Y' }}</td>
+                                                <td> {{ booking_request.check_out_date|date:'d M Y' }}</td>
+                                                <td>{% for room in booking_request.room.all  %}
+                                                    {{ room.type }} , {% endfor %}
+                                                </td>
+                                                <td> {% for no in number_of_rooms  %}
+                                                    {% if no.booking_request == booking_request %}
+                                                    {{ no.number_of_room  }} ,
+                                                    {% endif %}
+                                                    {% endfor %}</td>
+                                                <td> {% for room in price %}
+                                            {% if room.id == booking_request.id %}
+                                            {{ room.price }} birr
+                                            {% endif %}
+                                            {% endfor %}
+</td>
+                                                <td>
+                                                    {% if booking_request.status == 'waiting' %}
+
+                                                    <a href="{% url 'request_detail' booking_request.id %}?q=accept"> <button class="btn btn-primary"><title>if you have enough room accept</title>Accept</button></a>
+                                                    <a href="{% url 'request_detail' booking_request.id %}?q=cancel"> <button class="btn btn-black"><title>if you don't have enough room cancel</title>Cancel</button></a>
+                                                    {% elif booking_request.status == 'paid' %}
+                                                    <a href="{% url 'request_detail' booking_request.id %}?q=paid"><button class="btn btn-danger">{{ booking_request.status }}</button></a>
+                                                    {% endif %}
+                                                </td>
+                                         <td>{{ booking_request.status }}</td>
+                                        </tbody>
+                                        {% endfor %}
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            {% endblock %}

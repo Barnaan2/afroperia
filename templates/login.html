@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>log in</title>
+
+  <link rel="stylesheet" href="{% static 'assets/css/hotel.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+</head>
+<body class="hold-transition login-page">
+ {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+
+{% endfor %}
+    {% endif %}
+<div class="login-box">
+  <div class="login-logo">
+    <a href="index.html">Afroperia</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" name="phone_number" placeholder="Phone Number" id="phone">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <p class="mb-0">
+        <a href="{% url 'register' %}" class="text-center">Register</a>
+      </p>
+    </div>
+  </div>
+</div>
+<script src="{% static 'assets/js/adminlte.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script>
+  function getIp(callback) {
+    fetch('https://ipinfo.io/json?token=<your token>', { headers: { 'Accept': 'application/json' }})
+      .then((resp) => resp.json())
+      .catch(() => {
+        return {
+          country: 'et',
+        };
+      })
+      .then((resp) => callback(resp.country));
+   }
+
+  const phoneInputField = document.querySelector("#phone");
+  const phoneInput = window.intlTelInput(phoneInputField, {
+    initialCountry: "Et",
+    geoIpLookup: getIp,
+    utilsScript:
+      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+   });
+
+  const info = document.querySelector(".alert-info");
+
+function process(event) {
+event.preventDefault();
+
+const phoneNumber = phoneInput.getNumber();
+
+info.style.display = "";
+info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+}
+
+</script>
+
+</body>
+</html>

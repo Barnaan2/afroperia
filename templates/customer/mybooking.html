@@ -1,0 +1,107 @@
+{% extends 'main.html' %}
+{% block content %}
+    <main id="main">
+
+
+        <section id="horizontal-pricing" class="horizontal-pricing">
+
+
+            <div class="section-header">
+                <span>Bookings </span>
+                <h2>Booking Story</h2>
+
+            </div>
+
+            <div class="container ">
+{% for booking in bookings %}
+                <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <h3>{{ booking.hotel.name }} </h3>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        {{ booking.check_in_date|date:'d M Y' }}
+
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        {{ booking.check_out_date|date:'d M Y' }}
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                         {% if booking.status == 'make payment' %}
+                                                    <a href="{% url 'pay' booking.id  %}"> <button class="btn btn-primary">make payment</button></a>
+
+                        {% else %}
+                        <div class="text-center"><a href="#" class="btn btn-success">{{ booking.status }}</a></div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+<!--                <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <h3>Single room</h3>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Date-->
+
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Hotel name-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <div class="text-center"><a href="#" class="btn btn-danger">Expired</a></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <h3>Single room</h3>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Date-->
+
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Hotel name-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <div class="text-center"><a href="#" class="btn btn-danger">Expired</a></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <h3>Single room</h3>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Date-->
+
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Hotel name-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <div class="text-center"><a href="#" class="btn btn-danger">Expired</a></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <h3>Double</h3>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Date-->
+
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        Hotel name-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3 d-flex align-items-center justify-content-center">-->
+<!--                        <div class="text-center"><a href="#" class="btn btn-danger">Expired</a></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+
+
+
+        </section>
+
+    </main>
+    <!-- End #main -->
+
+{% endblock %}

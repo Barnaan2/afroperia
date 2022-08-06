@@ -1,0 +1,22 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+<!--this will be displayed if the customer is paid then the hotel can see the information the customer inserted when he
+paid to approve the payment is valid-->
+<div>
+
+    <h2>paid through</h2> {{ detail.payment_information.payment_method.name }}
+    <h2>transaction id</h2> {{detail.transaction_id }}
+<p>payment made {{detail.created|timesince }} ago</p>
+
+<p> please make sure you received the payment and approve as soon as you can. we use your approval speed to rate your hotel</p>
+
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input name="approve" type="hidden" value="approved">
+    <input type="submit" value="approve">
+</form>
+<p>not received yet? wait for a 30 minutes, if still not received <a href="chat.html"> contact customer</a>  </p>
+
+{% endblock %}

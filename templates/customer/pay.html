@@ -1,0 +1,30 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+       <div class="col-lg-4 Book card p-2">
+                     
+                            <div >
+                                <div>
+                                    {{ payment_information.count }}
+{% for payment in payment_information %}   
+                                <div>
+                                    
+                                </div>
+
+                            </div>
+                     
+                    </div>
+<div>
+    
+ <div class="text-center mt-2"><button ><a href="{% url 'payment_detail' booking_request_id payment.id %}">{{ payment.payment_method.name}}</a></button></div>
+
+</div>
+
+
+
+
+
+{% endfor %}
+{% endblock %}
+

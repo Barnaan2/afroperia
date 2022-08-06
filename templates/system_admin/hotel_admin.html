@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head><meta charset="us-ascii">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>register</title>
+  <link rel="stylesheet" href="{% static 'assets/css/hotel.min.css' %}">
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+        <h2>Adding admin for {{ hotel.name }}</h2>
+       {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+
+{% endfor %}
+    {% endif %}
+      <a href="{% url 'system_admin' %}" class="h1">Afroperia hotels </a>
+    </div>
+    <div class="card-body">
+         <form action="" method="POST">
+          {% csrf_token %}
+          {% if form.errors %}
+          <div class="alert alert-danger">
+            {{ form.errors }}
+          </div>
+          {% endif %}
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name='{{form.first_name.name}}'
+              {% if form.first_name.value is not None %} value={{form.first_name.value}} {% endif %}
+              placeholder="First Name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name='{{ form.last_name.name }}'
+              {% if form.last_name.value is not None %} value={{form.last_name.value}} {% endif %}
+              placeholder="Last Name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="input-group mb-3">
+            <input type="tel" id="phone" class="form-control" name='{{ form.phone_number.name }}'
+              {% if form.phone_number.value is not None %} value={{form.phone_number.value}} {% endif %}
+              placeholder="Phone Number">
+            <div class="input-group-append">
+              <div class="input-group-text">
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name='{{ form.username.name }}'
+              {% if form.username.value is not None %} value={{form.username.value}} {% endif %}
+              placeholder="User Name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="{{ form.password1.name }}" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="{{form.password2.name}}" placeholder="Retype password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" class="form-control" name="{{form.role.name}}" value="hotel_admin">
+          <div class="row">
+            <div class="col-8">
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+
+<!-- /.register-box -->
+<script src="{% static 'assets/js/adminlte.min.js' %}"></script>
+<script src="{% static 'assets/js/adminlte.min.js' %}"></script>
+
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>-->
+<!--  <script>-->
+<!--    function getIp(callback) {-->
+<!--      fetch('https://ipinfo.io/json?token=<your token>', { headers: { 'Accept': 'application/json' }})-->
+<!--        .then((resp) => resp.json())-->
+<!--        .catch(() => {-->
+<!--          return {-->
+<!--            country: 'et',-->
+<!--          };-->
+<!--        })-->
+<!--        .then((resp) => callback(resp.country));-->
+<!--     }-->
+
+<!--    const phoneInputField = document.querySelector("#phone");-->
+<!--    const phoneInput = window.intlTelInput(phoneInputField, {-->
+<!--      initialCountry: "Et",-->
+<!--      geoIpLookup: getIp,-->
+<!--      utilsScript:-->
+<!--        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",-->
+<!--     });-->
+
+<!--    const info = document.querySelector(".alert-info");-->
+
+<!--function process(event) {-->
+<!-- event.preventDefault();-->
+
+<!-- const phoneNumber = phoneInput.getNumber();-->
+
+<!-- info.style.display = "";-->
+<!-- info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;-->
+<!--}-->
+
+<!--  </script>-->
+
+
+</body>
+</html>

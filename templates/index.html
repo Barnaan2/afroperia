@@ -1,0 +1,166 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+
+
+
+<section id="service" class="services pt-0">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+            {% if count != None %}
+            <span> Results </span>
+            <h2>{{count}} , hotels matches your search</h2>
+            {% else %}
+            <span>Our Hotels</span>
+            <h2>Our Hotels</h2>
+            {% endif %}
+
+        </div>
+
+
+        <div class="row gy-4">
+            {% for hotel in hotels %}
+
+            <div class="col-lg-4 col-md-6 card-shadow" data-aos="fade-up" data-aos-delay="100">
+                <a href="{% url 'selected-hotel'  %}?q={{hotel.id}}">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="{{ hotel.picture.url }}" alt="" class="img-fluid">
+                        </div>
+                        <h3>{{hotel.name}}</h3>
+                        <p>{{hotel.relative_location}}</p>
+                    </div>
+                </a>
+            </div>
+
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<section id="faq" class="faq">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+            <span>More Info</span>
+            <h2>More info</h2>
+
+        </div>
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-10">
+
+                <div class="accordion accordion-flush" id="faqlist">
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-1">
+                                <i class="bi bi-question-circle question-icon"></i>
+                                Top Destinations
+                            </button>
+                        </h3>
+                        <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="#">Hotels in Hawassa</a></li>
+                                    <li><a href="#">Hotels in Bishoftu</a></li>
+                                    <li><a href="#">Hotels in Bahirdar</a></li>
+                                    <li><a href="#">Hotels in Harar</a></li>
+                                    <li><a href="#">Hotels in Adama</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- # Faq item-->
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-2">
+                                <i class="bi bi-question-circle question-icon"></i>
+                                Top Tourist areas
+                            </button>
+                        </h3>
+                        <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <div class="accordion-body">
+                                <ul>
+                                    <!--                                            {% for city in cities %}-->
+                                    <!--                                            <li><a href="#">hotels in {{ city.name }}</a></li>-->
+
+                                    <!--{% endfor %}-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- # Faq item-->
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-3">
+                                <i class="bi bi-question-circle question-icon"></i>
+                                Other Stuff
+                            </button>
+                        </h3>
+                        <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <div class="accordion-body">
+                                You can write anything here
+                            </div>
+                        </div>
+                    </div>
+                    <!-- # Faq item-->
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-4">
+                                <i class="bi bi-question-circle question-icon"></i>
+                                Other info
+                            </button>
+                        </h3>
+                        <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <div class="accordion-body">
+                                <i class="bi bi-question-circle question-icon"></i> Here also </div>
+                        </div>
+                    </div>
+                    <!-- # Faq item-->
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-5">
+                                <i class="bi bi-question-circle question-icon"></i>
+                                Terms and policies
+                            </button>
+                        </h3>
+                        <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <div class="accordion-body">
+                                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est
+                                ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit
+                                adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                            </div>
+                        </div>
+                    </div>
+                    <!-- # Faq item-->
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Frequently Asked Questions Section -->
+
+</main>
+<!-- End #main -->
+{% endblock %}

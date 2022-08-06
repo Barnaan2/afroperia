@@ -1,0 +1,11 @@
+{% extends 'hotel/base.html' %}
+{% block content %}
+<h2> all payment methods</h2>
+{% for payment_method in payment_methods %}
+{{ payment_method.name }}
+<a href="{% url 'update_payment' payment_method.id %}">edit</a>
+{% endfor %}
+<a href="{% url 'add_payment' %}">add payment method</a>
+
+
+{% endblock %}
