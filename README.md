@@ -1,4 +1,4 @@
-# afroperia Hotel Booking [See The Site Here ]( https://afroperia.jarmii.com/ )
+# Afroperia Hotel Booking [See The Site Here ]( https://afroperia.jarmii.com/ )
 Book Hotels easily , anywhere in Ethiopia ! 
 This site is fast and secure, Developed with django , bootstrap and javascript
 
